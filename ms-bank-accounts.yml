@@ -13,7 +13,7 @@ eureka:
 spring:
   jpa:
     hibernate: 
-      ddl-auto: none
+      ddl-auto: create
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/bd_bank
     username: root
