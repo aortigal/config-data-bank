@@ -1,0 +1,27 @@
+server:
+  port: 8078
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://host.docker.internal:8761/eureka
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: ms-bank-clients
+          uri: http://host.docker.internal:8070
+          predicates:
+            - Path=/api/clientes/**
+        - id: ms-bank-accounts
+          uri: http://host.docker.internal:8071
+          predicates:
+            - Path=/api/cuentas/**
+        - id: ms-bank-movements
+          uri: http://host.docker.internal:8072
+          predicates:
+            - Path=/api/movimientos/**
